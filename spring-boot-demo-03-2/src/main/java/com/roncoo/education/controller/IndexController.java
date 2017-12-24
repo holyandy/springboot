@@ -1,6 +1,3 @@
-/**
- * 2015-2016 龙果学院 (www.roncoo.com)
- */
 package com.roncoo.education.controller;
 
 import java.util.Date;
@@ -10,15 +7,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.roncoo.education.bean.User;
 
-/**
- * spring-boot-demo-3-2
- * 
- * @author wujing
- */
 @RestController
 @RequestMapping(value = "/index")
 public class IndexController {
@@ -57,6 +50,12 @@ public class IndexController {
 		user.setName(name);
 		user.setDate(new Date());
 		return user;
+	}
+
+	@RequestMapping(value = "/users/{username}")
+	@ResponseBody
+	public String getResult(@PathVariable("username") String username) {
+		return username;
 	}
 
 }
